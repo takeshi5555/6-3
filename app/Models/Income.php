@@ -9,6 +9,7 @@ class Income extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['amount' , 'date' , 'type_id', 'comment'];
     public function type(){
         return $this->belongsTo('App\Models\Type','type_id','id');
     }

@@ -2,6 +2,16 @@
 
 @section('content')
 <main class="py-4">
+    <div class="row justify-content-around mt-3 mb-2">
+    <a href="{{ route('create.income') }}">
+        <button type="button" class="btn btn-primary">+ 収入</button>
+    </a>
+    <a href="{{ route('create.spend') }}">
+        <button type="button" class="btn btn-primary">+ 支出</button>
+    </a>
+</div>
+
+
     <div class="row justify-content-around">
         <!-- 収入カード -->
         <div class="col-md-4">
