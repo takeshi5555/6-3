@@ -4,7 +4,7 @@
 <main class="py-4">
 <div class="row justify-content-around" >
             <div class="card mx-auto" style="width:50%;">
-                <div class="card-header text-center" style="width:50.6vw; transform: translateX(-0.6vw);">支出</div>
+                <div class="card-header text-center" style="width:50.6vw; transform: translateX(-0.6vw);">収入</div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
@@ -27,6 +27,25 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="d-flex justify-content-center gap-5 mt-3">
+                
+                <form action="{{ route('delete.income',['id' => $income['id']]) }}" method="post" >
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">削除</button>
+                </form>
+                    <a href="{{ route('edit.income', ['id' => $income['id']]) }}">
+                        <button class="btn btn-secondary">編集</button>
+                    </a>
+                    <form action="{{ route('softdelete.income',['id' => $income['id']]) }}" method="post" >
+                    @csrf
+                    <button type="submit" class="btn btn-warning">論理削除</button>
+                </form>
+                </div>
+
+
     </div>
 </main>
 @endsection

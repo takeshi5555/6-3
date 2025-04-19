@@ -43,3 +43,15 @@ Route::prefix('types')->group(function () {
     Route::get('/create', [RegistrationController::class, 'createTypeForm'])->name('types.create');
     Route::post('/', [RegistrationController::class, 'storeType'])->name('types.store');;
 });
+
+Route::get('/edit_spend/{id}', [RegistrationController::class, 'editSpendForm'])->name('edit.spend');
+Route::post('/edit_spend/{id}', [RegistrationController::class, 'editSpend'])->name('update.spend');
+
+Route::get('/edit_income/{id}', [RegistrationController::class, 'editIncomeForm'])->name('edit.income');
+Route::post('/edit_income/{id}', [RegistrationController::class, 'editIncome'])->name('update.income');;
+
+Route::delete('/delete_spend/{id}', [RegistrationController::class, 'deleteSpend'])->name('delete.spend');
+Route::post('/softdelete_spend/{id}', [RegistrationController::class, 'softDeleteSpend'])->name('softdelete.spend');
+
+Route::delete('/delete_income/{id}', [RegistrationController::class, 'deleteIncome'])->name('delete.income');
+Route::post('/softdelete_income/{id}', [RegistrationController::class, 'softDeleteIncome'])->name('softdelete.income');

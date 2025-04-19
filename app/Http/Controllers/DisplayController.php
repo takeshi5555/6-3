@@ -13,9 +13,8 @@ class DisplayController extends Controller
     {
         $spending = new Spending;
         $income = new Income;
-        $all1 = $income->all()->toArray();
-        $all = $spending->all()->toArray();
-   
+        $all1 = $income->where('del_flg', 0)->get()->toArray();
+        $all = $spending->where('del_flg', 0)->get()->toArray();
         return view('home',[
             'spends' =>$all,
             'incomes' =>$all1,

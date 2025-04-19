@@ -84,4 +84,99 @@ class RegistrationController extends Controller
             return redirect('/create_income');
         }
     }
+
+    public function editSpendForm(int $id) {
+        $spending = new Spending;
+        $type = 0;
+        $subject = '支出';
+    
+        $result = $spending->find($id);
+    
+        $types = Type::where('category', $type)->get();
+    
+        return view('spend.spend_edit', [
+            'id' => $id,
+            'subject' => $subject,
+            'result' => $result,
+            'types' => $types,
+        ]);
+    }
+
+    public function editIncomeForm(int $id) {
+        $income = new Income;
+        $type = 1;
+        $subject = '収入';
+    
+        $result = $income->find($id);
+    
+        $types = Type::where('category', $type)->get();
+    
+        return view('income.income_edit', [
+            'id' => $id,
+            'subject' => $subject,
+            'result' => $result,
+            'types' => $types,
+        ]);
+    }
+    public function editSpend(int $id, Request $request) {
+        $instance = new Spending;
+        $record = $instance->find($id);
+    
+        $record->amount = $request->amount;
+        $record->date = $request->date;
+        $record->type_id = $request->type_id;
+        $record->comment = $request->comment;
+    
+        $record->save();
+    
+        return redirect('/');
+    }
+
+
+    public function editIncome(int $id, Request $request) {
+        $instance = new Income;
+        $record = $instance->find($id);
+    
+        $record->amount = $request->amount;
+        $record->date = $request->date;
+        $record->type_id = $request->type_id;
+        $record->comment = $request->comment;
+    
+        $record->save();
+    
+        return redirect('/');
+    }
+
+    public function deleteSpend(int $id)
+    {
+        $record = Spending::find($id);
+        $record->delete();
+    
+        return redirect('/');
+    }
+    public function softDeleteSpend(int $id)
+    {
+        $record = Spending::find($id);
+        $record->del_flg = 1;
+        $record->save();
+        return redirect('/');
+    }
+
+    public function deleteIncome(int $id)
+    {
+        $record = Income::find($id);
+        $record->delete();
+    
+        return redirect('/');
+    }
+    public function softDeleteIncome(int $id)
+    {
+        $record = Income::find($id);
+        $record->del_flg = 1;
+        $record->save();
+        return redirect('/');
+    }
+
+
+
 }
