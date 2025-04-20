@@ -11,7 +11,7 @@ class RegistrationController extends Controller
 {
     public function createSpendForm()
     {
-        $params = Type::where('category', '0')->get();
+        $params = Type::where('category', '1')->get();
 
         return view('spend.spend_form', [
             'types' => $params,
@@ -39,7 +39,7 @@ class RegistrationController extends Controller
 
     public function createIncomeForm()
     {
-        $params1 = Type::where('category', '1')->get();
+        $params1 = Type::where('category', '0')->get();
 
         return view('income.income_form', [
             'types' => $params1,
@@ -78,16 +78,16 @@ class RegistrationController extends Controller
         ]);
         Type::create($validatedData);
         $category = $validatedData['category'];
-        if ($category == 0) {
+        if ($category == 1) {
             return redirect('/create_spend');
-        } elseif ($category == 1) {
+        } elseif ($category == 0) {
             return redirect('/create_income');
         }
     }
 
     public function editSpendForm(int $id) {
         $spending = new Spending;
-        $type = 0;
+        $type = 1;
         $subject = '支出';
     
         $result = $spending->find($id);
@@ -104,7 +104,7 @@ class RegistrationController extends Controller
 
     public function editIncomeForm(int $id) {
         $income = new Income;
-        $type = 1;
+        $type = 0;
         $subject = '収入';
     
         $result = $income->find($id);

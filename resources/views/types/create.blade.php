@@ -16,8 +16,8 @@
         <div class="mb-3">
             <label for="category" class="form-label">カテゴリ</label>
             <select name="category" id="category" class="form-select">
-                <option value="0" >0 (支出)</option>
-                <option value="1" >1 (収入)</option>
+                <option value="0" >0 (収入)</option>
+                <option value="1" >1 (支出)</option>
             </select>
 
         </div>
