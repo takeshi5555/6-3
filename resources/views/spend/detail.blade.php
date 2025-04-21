@@ -21,7 +21,7 @@
                             <tr>
                                 <td>{{ $spend['date'] }}</td>
                                 <td>{{ $spend['amount'] }}</td>
-                                <td >{{ $spend->type->name }}</td>
+                                <td >{{ optional($spend->type)->name }}</td>
                                 <td>{{ $spend['comment'] }}</td>
                             </tr>
                         </tbody>
@@ -50,3 +50,4 @@
     </div>
 </main>
 @endsection
+

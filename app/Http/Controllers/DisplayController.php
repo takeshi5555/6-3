@@ -25,7 +25,6 @@ class DisplayController extends Controller
     public function spendDetail(int $spendId)
     {
         $spend = Spending::with('type')->findOrFail($spendId);
-
         return view('spend.detail', ['spend' => $spend]);
     }
 

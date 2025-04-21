@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class TypesTableSeeder extends Seeder
@@ -16,15 +17,19 @@ class TypesTableSeeder extends Seeder
         $params = [
             [
                 'name' => '食費',
-                'category' => 0,
+                'category' => 1,
             ],
             [
                 'name' => '雑費',
-                'category' => 0,
+                'category' => 1,
             ],
             [
                 'name' => '給与',
-                'category' => 1,
+                'category' => 0,
+            ],
+            [
+            'name' => '給与',
+            'category' => 0,
             ],
         ];
         //
